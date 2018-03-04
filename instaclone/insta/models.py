@@ -7,6 +7,20 @@ class Profile(models.Model):
       bio = models.TextField(max_length=140)
       user = models.ForeignKey(User)
 
+      def __str__(self):
+            return self.bio
+
+      def save_profile(self):
+            self.save()
+
+      def delete_profile(self):
+            self.delete()
+
+      @classmethod
+      def search_profile(cls, search_term):
+            profile = cls.objects.filter(user__username__icontains=search_term)
+            return profile
+
 class Image(models.Model):
       image = models.ImageField(upload_to='image/',null=True,blank=True)
       image_name = models.CharField(max_length=60)
@@ -15,6 +29,8 @@ class Image(models.Model):
       likes = models.IntegerField(default=0)
       comments = models.CharField(max_length=120) 
 
+      def __str__(self):
+            return self.image_name
 
       @classmethod
       def save_image(cls):
@@ -25,13 +41,11 @@ class Image(models.Model):
             self.remove()
 
       @classmethod
-      def update_caption(cls):
-            pass
+      def update_caption(cls,id,caption):
+        captions = Image.objects.filter(id=id).update(caption = caption)
+        return captions
 
       @classmethod
       def get_image_by_id(cls,id): 
-            pass
-
-      @classmethod
-      def find_profile(cls,name):
-            pass
+            image = Image.objects.filter(id = Image.id)
+            return image
