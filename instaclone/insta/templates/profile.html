@@ -1,0 +1,39 @@
+{%extends "base.html" %}
+{% load static%}
+
+{% block content %}
+{{ block.super}}
+
+<div class="overlay">
+      
+
+      <div class="container img-container">
+            <div id="upload-div"></div>
+      </div>
+      <div class="container"><img class="img-circle center-block" src="{% static 'images/image1.svg' %}" width="140" height="140">
+            <h1 class="text-center">pascal <button class="btn btn-default btn-primary follow-button" type="button">Follow </button></h1>
+            <div class="col-md-12 profile-imgs">
+                  <div>
+                        <div class="overlay"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                  </div>
+            </div>
+      </div>
+</div>
+      <!-- <div class="container">
+      {% for profile in profiles %}    
+   <div class="row">
+      <div class="col-md-6 col-sm-2">
+            {% if profile.profile_photo %}
+                  <img class="img-responsive img-circle" src="{{profile.profile_photo.url}}" alt="why??" height="100" width="80"><hr>
+            {% else %}
+                  <img class="img-responsive" src="/static/images/image1.svg" alt="profile">
+            {% endif %}
+      </div>
+   </div>
+            
+      {% endfor %}
+      </div> -->
+{% endblock %}
