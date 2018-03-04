@@ -1,0 +1,34 @@
+{%extends "base.html" %}
+{% load static%}
+
+{% block content %}
+{{ block.super}}
+<div class="container-fluid header-top">
+      <div class="col-md-12"></div>
+</div>
+<div class="container img-container">
+      <div class="img-div" style="position:relative;">
+            <div class="header"><img class="img-circle" src="{% static 'images/image1.svg' %}">
+                  <label>/pascal </label>
+            </div>
+            <div class="empty-upload-container">
+                  <h1>Upload an Image</h1>
+                  <h2>(Click to upload) </h2>
+            </div>
+            <div id="caption-div" class="upload-photo-options">
+                  <h1>Add a caption</h1>
+                  <input type="text" style="width:100%;border:none;font-size:16px;height:48px;outline:none;padding:0px 10px;" placeholder="Type your caption here ...">
+            </div>
+            <div class="upload-photo-options">
+                  <div class="upload-options-disabled"></div>
+                  <div class="hidden-xs more-section"><a href="javascript:void(0)" id="caption-but" class="upload-options caption-but"><i class="fa fa-comments-o"></i> Add a caption</a><a href="javascript:void(0)" class="upload-options"><i class="icon ion-android-options"></i> Upload</a>
+                        <button class="btn btn-primary btn-block upload-button" type="submit">Save Photo</button>
+                  </div> 
+                  <div class="hidden-sm hidden-md hidden-lg more-section"><a href="javascript:void(0)" class="upload-options small caption-but"><i class="fa fa-comments-o"></i></a><a href="javascript:void(0)" class="upload-options small" style="padding:10px;"><i class="icon ion-android-options"></i></a>
+                        <a href="javascript:void(0)" class="upload-options small" style="padding:13px;"><i></i></a>
+                    <button class="btn btn-primary btn-block upload-button" type="submit">Save</button>
+                  </div> 
+            </div>
+      </div>
+</div>
+{% endblock %}
