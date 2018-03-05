@@ -21,6 +21,16 @@ class Profile(models.Model):
             profile = cls.objects.filter(user__username__icontains=search_term)
             return profile
 
+      @classmethod
+      def get_profile(cls):
+            profile = Profile.objects.all()
+            return profile
+
+      @classmethod
+      def find_profile(cls,search_term):
+            prof = cls.objects.filter(user__username__icontains=search_term)
+            return prof
+
 class Image(models.Model):
       image = models.ImageField(upload_to='image/',null=True,blank=True)
       image_name = models.CharField(max_length=60)
@@ -32,13 +42,11 @@ class Image(models.Model):
       def __str__(self):
             return self.image_name
 
-      @classmethod
-      def save_image(cls):
+      def save_image(self):
             self.save()
 
-      @classmethod
-      def delete_image(cls):
-            self.remove()
+      def delete_image(self):
+            self.delete()
 
       @classmethod
       def update_caption(cls,id,caption):
@@ -48,4 +56,9 @@ class Image(models.Model):
       @classmethod
       def get_image_by_id(cls,id): 
             image = Image.objects.filter(id = Image.id)
+            return image
+
+      @classmethod
+      def get_images(cls):
+            image = Image.objects.all()
             return image
