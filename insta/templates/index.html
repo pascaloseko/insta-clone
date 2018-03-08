@@ -5,17 +5,22 @@
 {{ block.super}}
 <div class="overlay">
       <div class="container img-container">
-            <div id="upload-div"></div>
-            <div class="img-div">{% for pic in image_posts %}
+            <div id="upload-div"></div>{% for pic in image_posts %}
+            <div class="img-div">
                   <div class="header"><img class="img-circle" src="static/images/image1.svg">
                         <label>{{pic.profile.user}} </label>
                   </div><img src="{{pic.image.url}}">
-                  <div class="header"><a href="#"><i class="fa fa-heart-o"></i></a><a href="#"><i class="fa fa-comment-o"></i></a></div>
+                  <div class="header"><a href="#"><i class="fa fa-heart-o"></i></a><a href="{% url 'comment'  id=pic.pk %}"><i class="fa fa-comment-o"></i></a></div>
                   <div class="more-section">
                         <label>{{pic.likes}} Likes</label>
                         <p><strong>{{pic.profile.user}} </strong>{{pic.image_caption}}</p>
-                  </div>{% endfor %}
+                  </div>
+                  <div>{% for comment in pic.comments.all %}
+                              <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
+                      {% endfor %}
+                  </div>
             </div>
+            {% endfor %}
       </div>
 </div>
 {% endblock %}
