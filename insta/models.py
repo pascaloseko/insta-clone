@@ -35,9 +35,9 @@ class Image(models.Model):
       image = models.ImageField(upload_to='image/',null=True,blank=True)
       image_name = models.CharField(max_length=60)
       image_caption = models.CharField(max_length=70)
-      profile = models.ForeignKey(Profile)
+      user = models.ForeignKey(User,on_delete=models.CASCADE)
+      profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
       likes = models.IntegerField(default=0)
-      comments = models.CharField(max_length=120) 
 
       def __str__(self):
             return self.image_name
@@ -62,3 +62,26 @@ class Image(models.Model):
       def get_images(cls):
             image = Image.objects.all()
             return image
+
+class Comment(models.Model):
+      comments = models.CharField(max_length=60,blank=True,null=True)
+      comment_time = models.DateTimeField(auto_now_add=True)
+      user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
+      pic = models.ForeignKey(Image,on_delete=models.CASCADE, related_name='comments',blank=True)
+
+      def __str__(self):
+            return self.comments
+
+      class Meta:
+            ordering = ['-comment_time']
+
+      def save_comment(self):
+            return self.save()
+
+      def delete_comment(self):
+            return self.delete()
+
+      @classmethod
+      def get_comments(cls):
+            comment = Comment.objects.all()
+            return comment
