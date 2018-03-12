@@ -12,7 +12,10 @@
                         <a href="{% url 'profile' pic.user.id %}"><span><img class="img-circle" src="static/images/image1.svg"></span><span>{{pic.profile.user}}</span></a>
                         </div>
                   </div><img src="{{pic.image.url}}">
-                  <div class="header"><a href="#"><i class="fa fa-heart-o"></i></a><a href="{% url 'comment'  id=pic.pk %}"><i class="fa fa-comment-o"></i></a></div>
+                  <div class="icons">
+                              <span ><a href="#"><i class="fa fa-heart-o fa-1x"></i></a></span>
+                              <span style="margin-left:10px"><a href="{% url 'comment'  id=pic.pk %}"><i class="fa fa-comment-o fa-1x"></i></i></a></span>
+                  </div>
                   <div class="more-section">
                         <label>{{pic.likes}} Likes</label>
                         <p><strong>{{pic.profile.user}} </strong>{{pic.image_caption}}</p>

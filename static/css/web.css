@@ -52,6 +52,17 @@ body {
       font-size:18px;
 }
 
+.icons{
+      margin-top: 10px;
+}
+
+.icons span,a{
+      font-size: 18px;
+      margin-top:20px;
+      margin-left:10px;
+      color: black;
+}
+
 @media (max-width:767px) {
       .img-container {
         margin-top:10px;
