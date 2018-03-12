@@ -30,12 +30,16 @@
                   
                 </form>
             </ul>
+            {% if user.is_authenticated %}
             <div class="menu-buttons" style="padding:30px">
                 <button class="btn btn-default" type="button" id="upload-but"><a href="{% url 'upload' %}"><i class="fa fa-upload"></i></button></a> 
-                <button class="btn btn-default" type="button" id="profile-but"><a href="{% url 'profile' %}"><i class="fa fa-user"></i></button></a> 
+                <button class="btn btn-default" type="button" id="profile-but"><a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i></button></a> 
                 <button class="btn btn-default" type="button" id="profile-but"><a href="#"> <i class="fa fa-map"></i></button></a>
-          </div>
-                
+                <button class="btn btn-default" type="button" id="profile-but"><a href="/logout"> <i class="fa fa-sign-out"></i></button></a>
+          </div>{% else %}
+          <div class="menu-buttons" style="padding:25px">
+            <a class='btn btn-default' href="/accounts/login">Login <i class="fa fa-sign-in"></i></a>
+          </div> {% endif %}
           </div><!-- /.navbar-collapse -->
          
         </div><!-- /.container-fluid -->
