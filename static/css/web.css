@@ -24,9 +24,10 @@ body {
       border:1px solid #e8e6e6;
 }
 
-.img-div .header {
+.img-div .header a {
       width:100%;
-      height:50px;
+      height:5
+      0px;
       position:relative;
 }
 
@@ -40,6 +41,11 @@ body {
       padding:15px 15px;
       color:#322f30;
       float:left;
+}
+
+.header a {
+      position: absolute;
+      float: left;
 }
 
 .img-div .header a i {
@@ -68,7 +74,7 @@ body {
 }
 
 .more-section label {
-      padding:0px 15px;
+      padding:0px 5px;
 }
 
 .more-section p {

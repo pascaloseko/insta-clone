@@ -1,8 +1,8 @@
 // toggle the upload and overlay
-$('#upload-but').click(function() {
-      $('#upload-div').toggle()
-      $('.overlay').toggle()
-  })
+// $('#upload-but').click(function() {
+//       $('#upload-div').toggle()
+//       $('.overlay').toggle()
+//   })
 
 $('.caption-but').click(function() {
       $('#caption-div').slideToggle(200, function() {
