@@ -12,11 +12,14 @@ def index(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
-    current_user = request.user
+def profile(request, user):
     title = 'Instagrum |Profile'
-    profiles = Profile.objects.all()
-    return render(request,'profile.html',{"title":title,"profiles":profiles,"user":current_user,})
+    try:
+        profiles = Profile.objects.filter(id=user)
+        photos = Image.objects.filter(user=user)
+    except Image.DoesNotExist:
+        raise Http404
+    return render(request,'profile.html',{"title":title,"profiles":profiles,"photos":photos})
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
@@ -51,7 +54,7 @@ def upload(request):
                     return redirect('index')
             else:
                 form = UploadForm()
-        return render(request,'upload.html',{"title":title, "user":current_user,"form":form})
+            return render(request,'upload.html',{"title":title, "user":current_user,"form":form})
 
 @login_required(login_url='/accounts/login/')
 def post_comment(request, id):
@@ -72,7 +75,6 @@ def post_comment(request, id):
     return render(request,'comments.html',{"title":title,"form":form})
 
 def search_results(request):
-
     if 'profile' in request.GET and request.GET["profile"]:
         search_term = request.GET.get("profile")
         searched_profiles = Profile.search_profile(search_term)
