@@ -4,17 +4,22 @@
 {% block content %}
 {{ block.super}}
 
-{% for profile in profiles%}
-      {% if profile.user.id == user.id%}
+{% for profile in profiles %}
       <div class="container"><img class="img-circle center-block" src="{{profile.profile_photo.url}}" width="140" height="140">
-      <h1 class="text-center">{{profile.user.username}} <button class="btn btn-default btn-primary follow-button" type="button">Follow </button></h1>
-      {% endif %}
+      <h1 class="text-center">{{profile.user.username}}
+            <button class="btn btn-default btn-primary follow-button" type="button">Follow </button>
+      </h1>
 {% endfor %}
 <div class="overlay">
       <div class="container img-container">
-            <div id="upload-div"></div>
-      </div>{% for profile in profiles %} 
-      
-      </div>{% endfor %}
+            <div class="row">
+                  {% for photo in photos %} 
+                        <div class="col-md-6">
+                              <img class="img-responsive" src="{{photo.image.url}}" alt="photo" height="500" width="500">
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
 </div>
 {% endblock %}
