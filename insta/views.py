@@ -5,6 +5,7 @@ from .models import Image,Profile,Comment
 from .forms import EditProfile,UploadForm,CommentForm
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
     title = 'Instagrum'
     image_posts = Image.objects.all()
