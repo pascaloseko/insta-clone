@@ -10,3 +10,4 @@ pyvenv.cfg
 db.sqlite3
 staticfiles/
 media/
+static/
