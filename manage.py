@@ -6,7 +6,8 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "insta.settings")
+    # Setting the default Django settings module. Can be overwritten by an environment variable
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'insta.settings.local')  
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

@@ -12,21 +12,25 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+loadenv = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-z@$!wr0659h-c97*ar!+zx)_b$8yx6f!056#^a)6r32r7*rzvi"
+SECRET_KEY = loadenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = loadenv.bool('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = loadenv.list('DJANGO_ALLOWED_HOSTS', default=[])
 
 
 # Application definition
@@ -79,11 +83,11 @@ WSGI_APPLICATION = "insta.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
+        "NAME": loadenv('DB_NAME'),
+        "USER": loadenv('DB_USER'),
+        "PASSWORD": loadenv('DB_PASSWORD'),
+        "HOST": loadenv('DB_HOST'),
+        "PORT": loadenv('DB_PORT'),
     }
 }
 
@@ -127,7 +131,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, '../static'),
 ]
 
 MEDIA_URL = '/media/'

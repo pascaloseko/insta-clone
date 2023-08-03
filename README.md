@@ -28,10 +28,35 @@ As a user i should be able to perform the following tasks:
 ## Installation steps
 * $ git clone https://github.com/pascaloseko/insta-clone.git
 * $ cd insta-clone
-* $ source virtual/bin/activate
+* $ python3 -m venv env
+* $ source env/bin/activate
 * Install all the necessary requirements by running pip install -r requirements.txt (Python 3).
-* $ ./manager.py runserver
+* install docker compose in your local machine https://docs.docker.com/compose/install/
+* create a .env file in your root folder:
 
+  populate the keys with the relevant values
+  ```
+  SECRET_KEY=your-secret-key
+  DJANGO_DEBUG=True
+  DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]
+  DB_NAME=postgres
+  DB_USER=postgres
+  DB_PASSWORD=postgres
+  DB_HOST=db
+  DB_PORT=5432
+  ```
+* to run the local server run
+
+  ```$ docker compose up --build```
+
+* apply migrations
+
+  ```
+  $ docker compose exec web python manage.py makemigrations
+  $ docker compose exec web python manage.py migrate
+  ```
+
+* use the app on http://localhost:5050/
 
 # Technologies Used
 
@@ -39,8 +64,8 @@ As a user i should be able to perform the following tasks:
 * HTML5
 * CSS3
 * Bootstrap5
-* Python3.6.3
-* django 1.11
+* Python3.10.12
+* django 4.2.3
 
 
 ## License
