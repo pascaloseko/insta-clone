@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{{ block.super }}
+<div class="overlay">
+      <div class="container img-container">
+            <div id="upload-div"></div>
+            {% for pic in image_posts %}
+            <div class="row justify-content-center">
+                  <div class="col-md-6">
+                        <div class="img-div card mb-3">
+                              <div class="card-header">
+                                    <div class="row">
+                                          <a href="{% url 'profile' pic.user.id %}">
+                                                <img class="rounded-circle" src="{{pic.profile_photo.url}}">
+                                                {{pic.profile.user}}
+                                          </a>
+                                    </div>
+                              </div>
+                              <img class="card-img-top" src="{{pic.image.url}}">
+                              <div class="card-body">
+                                    <div class="icons">
+                                          {% if request.user in pic.likers.all %}
+                                          <a href="{% url 'like_image' pic.pk %}"><i class="bi bi-heart-fill"></i></a>
+                                          {% else %}
+                                          <a href="{% url 'like_image' pic.pk %}"><i class="bi bi-heart"></i></a>
+                                          {% endif %}
+                                          <a style="margin-left:10px" href="{% url 'comment'  id=pic.pk %}"><i
+                                                      class="bi bi-chat"></i></a>
+                                    </div>
+
+                                    <div class="more-section">
+                                          <label>{{pic.likes}} Likes</label>
+                                          <p><strong>{{pic.profile.user}} </strong>{{pic.image_caption}}</p>
+                                    </div>
+                                    <div>
+                                          {% for comment in pic.comments.all %}
+                                          <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
+                                          {% endfor %}
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            {% endfor %}
+      </div>
+</div>
+{% endblock %}

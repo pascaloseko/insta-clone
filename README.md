@@ -38,7 +38,7 @@ As a user i should be able to perform the following tasks:
 #### This project uses major technologies which are :
 * HTML5
 * CSS3
-* Bootstrap3
+* Bootstrap5
 * Python3.6.3
 * django 1.11
 

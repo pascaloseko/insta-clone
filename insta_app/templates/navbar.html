@@ -1,0 +1,122 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          < Brand and toggle get grouped for better mobile display -->
+<!-- <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-center" href="/" style="font-size:30px;color:white"><i class="fa fa-instagram"></i> Instagrum</a>
+          </div> -->
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" style="margin-left:250px;padding:10px">
+              <form class="navbar-form navbar-left" role="search" action="{% url 'search_results' %}">
+                  <div class="form-group inner-addon right-addon">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control" placeholder="search profile" name="profile" style="width:300px">
+                  </div>
+                  
+                </form>
+            </ul> -->
+<!-- {% if user.is_authenticated %}
+            <div class="menu-buttons" style="padding:30px">
+                <button class="btn btn-default" type="button" id="upload-but"><a href="{% url 'upload' %}"><i class="fa fa-upload"></i></button></a> 
+                <button class="btn btn-default" type="button" id="profile-but"><a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i></button></a> 
+                <button class="btn btn-default" type="button" id="profile-but"><a href="#"> <i class="fa fa-map"></i></button></a>
+                <button class="btn btn-default" type="button" id="profile-but"><a href="/logout"> <i class="fa fa-sign-out"></i></button></a>
+          </div>{% else %}
+          <div class="menu-buttons" style="padding:25px">
+            <a class='btn btn-default' href="/accounts/login">Login <i class="fa fa-sign-in"></i></a>
+          </div> {% endif %} </div> /.navbar-collapse </div>/.container-fluid -->
+<!-- </nav>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-instagram"> Instagrum</i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <button class="btn btn-default" type="button" id="upload-but"><a href="{% url 'upload' %}"
+                style="text-decoration: none;"><i class="bi bi-box-arrow-in-down"> Upload Image</i></a></button>
+            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+          </li>
+          {% if user.id %}
+          <li class="nav-item">
+            <button class="btn btn-default" type="button" id="profile-but">
+              <a href="{% url 'profile' user.id %}" style="text-decoration: none;"><i class="bi bi-person-down">View
+                  Profile</i></a>
+            </button>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <button class="btn btn-default" type="button" id="profile-but">
+              <a href="#" style="text-decoration: none;"> <i class="bi bi-map-fill"> Map</i></a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-default" type="button" id="profile-but">
+              <a href="{% url 'logout' %}" style="text-decoration: none;"> <i class="bi bi-box-arrow-right"> Sign Out</i></a>
+            </button>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" role="search" action="{% url 'search_results' %}">
+          <input class="form-control me-2" type="search" placeholder="Search Profile" aria-label="Search"
+            name="profile">
+          <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+  </nav>
+</body>
+
+</html>
