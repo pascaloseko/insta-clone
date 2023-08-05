@@ -71,7 +71,3 @@ As a user i should be able to perform the following tasks:
 ## License
 
 * This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-#### All my classmates,online resources(stackoverflow,w3 schools).
