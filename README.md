@@ -1,73 +1,84 @@
-# insta-clone
+# Insta-Clone
 
 ## Author
 
 Pascal Oseko
 
-## DESCRIPTION
+## Description
 
-app clone of Instagram.
+This application is a clone of Instagram.
 
+### User Stories
 
-#### User Stories
+As a user, the application allows you to:
 
-As a user i should be able to perform the following tasks:
-
-  1. Sign in to the application.
-  2. Upload my personal pictures to the application.
-  3. See my profile with all my pictures.
-  4. Follow other users and see their pictures on my timeline.
-  5. Like a picture and leave a comment on it.
-
-
+1. Sign in to the application.
+2. Upload personal pictures.
+3. View a profile that hosts all uploaded pictures.
+4. Follow other users and see their pictures on the timeline.
+5. Like a picture and leave comments.
 
 ## Prerequisites
 
-* Python3.6.3
+* Python 3.6.3
 
-## Installation steps
-* $ git clone https://github.com/pascaloseko/insta-clone.git
-* $ cd insta-clone
-* $ python3 -m venv env
-* $ source env/bin/activate
-* Install all the necessary requirements by running pip install -r requirements.txt (Python 3).
-* install docker compose in your local machine https://docs.docker.com/compose/install/
-* create a .env file in your root folder:
+## Installation Steps
 
-  populate the keys with the relevant values
-  ```
-  SECRET_KEY=your-secret-key
-  DJANGO_DEBUG=True
-  DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]
-  DB_NAME=postgres
-  DB_USER=postgres
-  DB_PASSWORD=postgres
-  DB_HOST=db
-  DB_PORT=5432
-  ```
-* to run the local server run
+Follow the below steps to get the application up and running:
 
-  ```$ docker compose up --build```
+1. Clone the project: 
+   ```
+   git clone https://github.com/pascaloseko/insta-clone.git
+   ```
+2. Navigate to the project folder:
+   ```
+   cd insta-clone
+   ```
+3. Create a Python virtual environment:
+   ```
+   python3 -m venv env
+   ```
+4. Activate the virtual environment:
+   ```
+   source env/bin/activate
+   ```
+5. Install all the necessary requirements by running:
+   ```
+   pip install -r requirements.txt
+   ```
+6. Install Docker Compose in your local machine by following [these instructions](https://docs.docker.com/compose/install/).
+7. Create a `.env` file in your root folder, and populate the keys with the relevant values:
+   ```
+   SECRET_KEY=your-secret-key
+   DJANGO_DEBUG=True
+   DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]
+   DB_NAME=postgres
+   DB_USER=postgres
+   DB_PASSWORD=postgres
+   DB_HOST=db
+   DB_PORT=5432
+   ```
+8. Run the local server:
+   ```
+   docker compose up --build
+   ```
+9. Apply migrations:
+   ```
+   docker compose exec web python manage.py makemigrations
+   docker compose exec web python manage.py migrate
+   ```
+10. You can now use the application at `http://localhost:5050/`.
 
-* apply migrations
+## Technologies Used
 
-  ```
-  $ docker compose exec web python manage.py makemigrations
-  $ docker compose exec web python manage.py migrate
-  ```
+The major technologies used in this project are:
 
-* use the app on http://localhost:5050/
-
-# Technologies Used
-
-#### This project uses major technologies which are :
 * HTML5
 * CSS3
 * Bootstrap5
-* Python3.10.12
-* django 4.2.3
-
+* Python 3.10.12
+* Django 4.2.3
 
 ## License
 
-* This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. For more information, please refer to the [LICENSE](LICENSE) file.
