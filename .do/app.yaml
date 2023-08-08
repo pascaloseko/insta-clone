@@ -18,7 +18,7 @@ envs:
     scope: RUN_AND_BUILD_TIME
     type: SECRET
     value: abc123
-  - key: POSTGRES_DB
+  - key: DB_NAME
     scope: RUN_AND_BUILD_TIME
     value: ${db.DATABASE}
   - key: POSTGRES_HOST
