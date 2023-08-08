@@ -13,12 +13,20 @@
                               <div class="card-header">
                                     <div class="row">
                                           <a href="{% url 'profile' pic.user.id %}">
-                                                <img class="rounded-circle" src="{{pic.profile_photo.url}}">
-                                                {{pic.profile.user}}
+                                                {% if pic.profile_photo and pic.profile_photo.url %}
+                                                      <img class="rounded-circle" src="{{pic.profile_photo.url}}">
+                                                      {{pic.profile.user}}
+                                                {% else %}
+                                                      <p>No image file</p>
+                                                {% endif %}
                                           </a>
                                     </div>
                               </div>
-                              <img class="card-img-top" src="{{pic.image.url}}">
+                              {% if pic.image and pic.image.url %}
+                                    <img class="card-img-top" src="{{pic.image.url}}">
+                              {% else %}
+                                    <p>No image file</p>
+                              {% endif %}
                               <div class="card-body">
                                     <div class="icons">
                                           {% if request.user in pic.likers.all %}
