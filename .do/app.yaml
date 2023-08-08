@@ -33,6 +33,9 @@ envs:
   - key: DB_PORT
     scope: RUN_AND_BUILD_TIME
     value: ${db.PORT}
+  - key: DJANGO_SETTINGS_MODULE
+    scope: RUN_AND_BUILD_TIME
+    value: insta.settings.prod
 
 jobs:
   - environment_slug: python
