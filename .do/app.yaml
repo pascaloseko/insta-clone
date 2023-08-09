@@ -89,6 +89,7 @@ services:
         value: ${db.PORT}
     git:
       branch: production-3
+      deploy_on_push: true
       repo_clone_url: https://github.com/pascaloseko/insta-clone.git
     http_port: 8080
     instance_count: 1
