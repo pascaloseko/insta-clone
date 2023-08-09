@@ -45,7 +45,7 @@ jobs:
         run: |
           python manage.py test
       - name: Push Master Branch into Production
-        uses: pascaloseko/action-branch-to-branch@master
+        uses: pascaloseko/insta-clone@master
         with:
           dest_branch: production-3
           source_branch: master
