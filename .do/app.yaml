@@ -1,0 +1,100 @@
+databases:
+  - engine: PG
+    name: db
+    num_nodes: 1
+    size: db-s-dev-database
+    version: "12"
+envs:
+  - key: DISABLE_COLLECTSTATIC
+    scope: RUN_AND_BUILD_TIME
+    value: "1"
+  - key: DJANGO_DEBUG
+    scope: RUN_AND_BUILD_TIME
+    value: "0"
+  - key: DJANGO_ALLOWED_HOST
+    scope: RUN_AND_BUILD_TIME
+    value: instagrum-xdvsz.ondigitalocean.app/
+  - key: SECRET_KEY
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+    value: abc123
+  - key: DB_NAME
+    scope: RUN_AND_BUILD_TIME
+    value: ${db.DATABASE}
+  - key: DB_USER
+    scope: RUN_AND_BUILD_TIME
+    value: ${db.USERNAME}
+  - key: DB_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+    value: ${db.PASSWORD}
+  - key: DB_HOST
+    scope: RUN_AND_BUILD_TIME
+    value: ${db.HOSTNAME}
+  - key: DB_PORT
+    scope: RUN_AND_BUILD_TIME
+    value: ${db.PORT}
+  - key: DJANGO_SETTINGS_MODULE
+    scope: RUN_AND_BUILD_TIME
+    value: insta.settings.prod
+
+jobs:
+  - environment_slug: python
+    envs:
+      - key: DB_NAME
+        scope: RUN_AND_BUILD_TIME
+        value: ${db.DATABASE}
+      - key: DB_USER
+        scope: RUN_AND_BUILD_TIME
+        value: ${db.USERNAME}
+      - key: DB_PASSWORD
+        scope: RUN_AND_BUILD_TIME
+        value: ${db.PASSWORD}
+      - key: DB_HOST
+        scope: RUN_AND_BUILD_TIME
+        value: ${db.HOSTNAME}
+      - key: DB_PORT
+        scope: RUN_AND_BUILD_TIME
+        value: ${db.PORT}
+    git:
+      branch: production-3
+      repo_clone_url: https://github.com/pascaloseko/insta-clone.git
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    kind: PRE_DEPLOY
+    name: django-migrate-job
+    run_command: python manage.py migrate --noinput
+    source_dir: /
+name: instagrum
+region: sfo3
+services:
+  - environment_slug: python
+    envs:
+      - key: DATABASE_URL
+        scope: RUN_TIME
+        value: ${db.DATABASE_URL}
+      - key: DB_NAME
+        scope: RUN_TIME
+        value: ${db.DATABASE}
+      - key: DB_USER
+        scope: RUN_TIME
+        value: ${db.USERNAME}
+      - key: DB_PASSWORD
+        scope: RUN_TIME
+        value: ${db.PASSWORD}
+      - key: DB_HOST
+        scope: RUN_TIME
+        value: ${db.HOSTNAME}
+      - key: DB_PORT
+        scope: RUN_TIME
+        value: ${db.PORT}
+    git:
+      branch: production-3
+      repo_clone_url: https://github.com/pascaloseko/insta-clone.git
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    name: instagrum
+    routes:
+      - path: /
+    run_command: gunicorn --worker-tmp-dir /dev/shm insta.wsgi
+    source_dir: /

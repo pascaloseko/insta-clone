@@ -2,4 +2,4 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['your-production-domain.com']  # TODO: Modify this
+ALLOWED_HOSTS = ['instagrum-xdvsz.ondigitalocean.app', '10.244.5.105']
