@@ -28,6 +28,7 @@ jobs:
           pip install -r requirements.txt
       - name: Run Collectstatic
         env:
+          DJANGO_SETTINGS_MODULE: insta.settings.prod
           DEBUG: "0"
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
