@@ -1,44 +1,79 @@
-{% extends "registration/base.html"%}
+{% extends "registration/base.html" %}
 {% load bootstrap5 %}
+{% load widget_tweaks %}
+
 {% block content %}
-<div class="container">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-box {
+    background-color: white;
+    padding: 20px 40px;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    width: 300px;
+  }
+
+  .login-box h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #3897f0;
+    border-color: #3897f0;
+  }
+
+  /* Additional styles for the form fields can go here. */
+</style>
+
+<div class="login-container">
+  <div class="login-box">
+      <h3>Sign In</h3>
       {% if form.errors %}
-        <p> Password or Username is incorrect </p>
+      <p style="color: red;">Password or Username is incorrect</p>
       {% endif %}
-      <div class="panel panel-default">
 
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
-        <div class="panel-body">
+      <form action="/accounts/login/" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+              <div class="mb-3">
+                  {{ field|add_class:"form-control" }}
+                  {% if field.errors %}
+                      <div class="invalid-feedback">
+                          {{ field.errors.0 }}
+                      </div>
+                  {% endif %}
+              </div>
+          {% endfor %}
+          
+          <div class="mb-3">
+              <input type="submit" class="btn btn-primary" value="Login">
+          </div>
 
-          <form  action="/accounts/login/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form%}
-
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
-              <br/>
-              <br/>
-              You don't have an account?<a href="/accounts/register/"> SignUp</a>
-            </div>
-
-            <input type="hidden" name="next" value="{% url 'index' %}">
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
+          <div class="text-center">
+              <span>You don't have an account? </span><a href="/accounts/register/">Sign Up</a>
+          </div>
+          <input type="hidden" name="next" value="{% url 'index' %}">
+      </form>
   </div>
 </div>
+
+<script>
+  document.querySelector('#id_username').placeholder = 'Username';
+  document.querySelector('#id_password').placeholder = 'Password';
+</script>
 
 {% endblock %}
