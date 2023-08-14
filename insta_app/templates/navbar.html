@@ -1,49 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          < Brand and toggle get grouped for better mobile display -->
-<!-- <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand text-center" href="/" style="font-size:30px;color:white"><i class="fa fa-instagram"></i> Instagrum</a>
-          </div> -->
-
-<!-- Collect the nav links, forms, and other content for toggling -->
-<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav" style="margin-left:250px;padding:10px">
-              <form class="navbar-form navbar-left" role="search" action="{% url 'search_results' %}">
-                  <div class="form-group inner-addon right-addon">
-                    <i class="fa fa-search"></i>
-                    <input type="text" class="form-control" placeholder="search profile" name="profile" style="width:300px">
-                  </div>
-                  
-                </form>
-            </ul> -->
-<!-- {% if user.is_authenticated %}
-            <div class="menu-buttons" style="padding:30px">
-                <button class="btn btn-default" type="button" id="upload-but"><a href="{% url 'upload' %}"><i class="fa fa-upload"></i></button></a> 
-                <button class="btn btn-default" type="button" id="profile-but"><a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i></button></a> 
-                <button class="btn btn-default" type="button" id="profile-but"><a href="#"> <i class="fa fa-map"></i></button></a>
-                <button class="btn btn-default" type="button" id="profile-but"><a href="/logout"> <i class="fa fa-sign-out"></i></button></a>
-          </div>{% else %}
-          <div class="menu-buttons" style="padding:25px">
-            <a class='btn btn-default' href="/accounts/login">Login <i class="fa fa-sign-in"></i></a>
-          </div> {% endif %} </div> /.navbar-collapse </div>/.container-fluid -->
-<!-- </nav>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,11 +33,6 @@
             </button>
           </li>
           {% endif %}
-          <li class="nav-item">
-            <button class="btn btn-default" type="button" id="profile-but">
-              <a href="#" style="text-decoration: none;"> <i class="bi bi-map-fill"> Map</i></a>
-            </button>
-          </li>
           <li class="nav-item">
             <button class="btn btn-default" type="button" id="profile-but">
               <a href="{% url 'logout' %}" style="text-decoration: none;"> <i class="bi bi-box-arrow-right"> Sign Out</i></a>

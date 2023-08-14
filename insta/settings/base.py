@@ -36,6 +36,7 @@ ALLOWED_HOSTS = loadenv.list('DJANGO_ALLOWED_HOSTS', default=[])
 # Application definition
 
 INSTALLED_APPS = [
+    "widget_tweaks",
     "insta_app",
     "bootstrap5",
     "django.contrib.admin",
