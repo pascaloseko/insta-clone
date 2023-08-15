@@ -5,16 +5,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('insta_app', '0004_alter_image_user'),
+        ("insta_app", "0004_alter_image_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='image',
-            name='likers',
-            field=models.ManyToManyField(related_name='liked_images', to=settings.AUTH_USER_MODEL),
+            model_name="image",
+            name="likers",
+            field=models.ManyToManyField(
+                related_name="liked_images", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

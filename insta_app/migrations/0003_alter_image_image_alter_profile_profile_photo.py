@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('insta_app', '0002_alter_image_user_alter_profile_user'),
+        ("insta_app", "0002_alter_image_user_alter_profile_user"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='image',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='static/image/'),
+            model_name="image",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="static/image/"),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='profile_photo',
-            field=models.ImageField(blank=True, null=True, upload_to='static/profile/'),
+            model_name="profile",
+            name="profile_photo",
+            field=models.ImageField(blank=True, null=True, upload_to="static/profile/"),
         ),
     ]

@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('insta_app', '0006_comment_created_at_comment_updated_at_and_more'),
+        ("insta_app", "0006_comment_created_at_comment_updated_at_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='image',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='image/'),
+            model_name="image",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="image/"),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='profile_photo',
-            field=models.ImageField(blank=True, null=True, upload_to='profile/'),
+            model_name="profile",
+            name="profile_photo",
+            field=models.ImageField(blank=True, null=True, upload_to="profile/"),
         ),
     ]
