@@ -10,6 +10,8 @@ django-widget-tweaks==1.4.12
 gunicorn==20.1.0
 jmespath==0.10.0
 Pillow==10.0.0
+pip-autoremove==0.10.0
+pipdeptree==2.12.0
 psycopg2-binary==2.9.6
 python-dateutil==2.8.2
 s3transfer==0.4.2
@@ -18,4 +20,3 @@ soupsieve==2.4.1
 sqlparse==0.4.4
 typing_extensions==4.7.1
 urllib3==1.26.16
-black==23.7.0
