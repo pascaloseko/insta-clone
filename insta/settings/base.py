@@ -20,17 +20,17 @@ loadenv = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, "../.env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-SECRET_KEY = loadenv('SECRET_KEY')
+SECRET_KEY = loadenv("SECRET_KEY")
 
-DEBUG = loadenv.bool('DJANGO_DEBUG', default=False)
+DEBUG = loadenv.bool("DJANGO_DEBUG", default=False)
 
-ALLOWED_HOSTS = loadenv.list('DJANGO_ALLOWED_HOSTS', default=[])
+ALLOWED_HOSTS = loadenv.list("DJANGO_ALLOWED_HOSTS", default=[])
 
 
 # Application definition
@@ -62,7 +62,7 @@ ROOT_URLCONF = "insta.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'insta_app', 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "insta_app", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,11 +84,11 @@ WSGI_APPLICATION = "insta.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": loadenv('DB_NAME'),
-        "USER": loadenv('DB_USER'),
-        "PASSWORD": loadenv('DB_PASSWORD'),
-        "HOST": loadenv('DB_HOST'),
-        "PORT": loadenv('DB_PORT'),
+        "NAME": loadenv("DB_NAME"),
+        "USER": loadenv("DB_USER"),
+        "PASSWORD": loadenv("DB_PASSWORD"),
+        "HOST": loadenv("DB_HOST"),
+        "PORT": loadenv("DB_PORT"),
     }
 }
 
@@ -129,14 +129,14 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../static'),
+    os.path.join(BASE_DIR, "../static"),
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
