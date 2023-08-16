@@ -18,7 +18,6 @@ def register(request):
 def index(request):
     title = "Instagrum"
     image_posts = Image.objects.all()
-    print(image_posts[0].profile.profile_photo)
     return render(request, "index.html", {"title": title, "image_posts": image_posts})
 
 
@@ -79,8 +78,6 @@ def edit_profile(request):
             if form.is_valid():
                 form.save()
                 return redirect("profile", current_user.id)
-            else:
-                print(form.errors)
         else:
             form = EditProfile(instance=profile)
     else:
@@ -106,8 +103,6 @@ def upload(request):
             )  # Directly access the profile from request.user
             upload.save()
             return redirect("index")
-        else:
-            print(form.errors)
     else:
         form = UploadForm()
 
