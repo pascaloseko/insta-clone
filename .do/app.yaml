@@ -66,6 +66,8 @@ jobs:
     source_dir: /
 name: instagrum
 region: sfo3
+features:
+    - buildpack-stack=ubuntu-22
 services:
   - environment_slug: python
     envs:
