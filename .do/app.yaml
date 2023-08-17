@@ -10,7 +10,7 @@ envs:
     value: "1"
   - key: DJANGO_DEBUG
     scope: RUN_AND_BUILD_TIME
-    value: "0"
+    value: "1"
   - key: DJANGO_ALLOWED_HOST
     scope: RUN_AND_BUILD_TIME
     value: instagrum-xdvsz.ondigitalocean.app/
