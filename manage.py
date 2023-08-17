@@ -6,14 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() in ["true", "1"]
-
-    print(DEBUG)
-
-    if DEBUG:
-        default_settings = "insta.settings.local"
-    else:
-        default_settings = "insta.settings.prod"
+    default_settings = "insta.settings.prod"
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", default_settings)
     try:
