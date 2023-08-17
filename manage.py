@@ -8,6 +8,8 @@ def main():
     """Run administrative tasks."""
     DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() in ["true", "1"]
 
+    print(DEBUG)
+
     if DEBUG:
         default_settings = "insta.settings.local"
     else:
