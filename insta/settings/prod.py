@@ -12,6 +12,9 @@ AWS_DEFAULT_ACL = "public-read"
 AWS_S3_CUSTOM_DOMAIN = "django-instagrum.sfo3.digitaloceanspaces.com"
 AWS_STORAGE_BUCKET_NAME = "django-instagrum"
 
+AWS_ACCESS_KEY_ID = loadenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = loadenv("AWS_SECRET_ACCESS_KEY")
+
 # Static files settings
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
